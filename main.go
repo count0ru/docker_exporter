@@ -95,7 +95,7 @@ func collectContainerMetrics() {
 
 	containersNewState, err := getCurrentContainersState()
 	if err != nil {
-		log.Fatalf("cat get docker containers metrics ", err)
+		log.Print("can't get docker containers metrics ", err)
 	}
 
 	var isDeleted bool
@@ -129,7 +129,7 @@ func main() {
 
 	containersLastState, err = getCurrentContainersState()
 	if err != nil {
-		log.Fatalf("cat get docker containers metrics ", err)
+		log.Print("can't get docker containers metrics ", err)
 	}
 
 	collectContainerMetrics()
