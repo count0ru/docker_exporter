@@ -46,6 +46,8 @@ func getCurrentContainersState() (currentContainersState []containersState, err 
 		return nil, err
 	}
 
+	defer cli.Close()
+
 	containersList, err := cli.ContainerList(context.Background(), types.ContainerListOptions{All: true})
 	if err != nil {
 		return nil, err
@@ -60,7 +62,6 @@ func getCurrentContainersState() (currentContainersState []containersState, err 
 	}
 	return currentContainersState, err
 
-	defer cli.Close()
 }
 
 func createContainerMetric(container containersState) {
