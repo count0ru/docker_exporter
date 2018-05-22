@@ -59,6 +59,8 @@ func getCurrentContainersState() (currentContainersState []containersState, err 
 		})
 	}
 	return currentContainersState, err
+
+	defer cli.Close()
 }
 
 func createContainerMetric(container containersState) {
